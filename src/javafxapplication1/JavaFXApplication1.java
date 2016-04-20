@@ -209,7 +209,7 @@ public class JavaFXApplication1 extends Application implements IntParser {
         
         Scene scene = new Scene(root, 600, 400);
         
-        primaryStage.setTitle("PARSER - Repozytrium Dokumentów MIR");
+        primaryStage.setTitle("PARSER - Repozytrium Dokumentów MIR-PIB");
         primaryStage.setScene(scene);
         primaryStage.show();
     }
