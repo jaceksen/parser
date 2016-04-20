@@ -10,7 +10,6 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -19,12 +18,14 @@ import java.io.UnsupportedEncodingException;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.geometry.Insets;
 import javafx.geometry.Orientation;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.effect.BoxBlur;
 import javafx.scene.layout.FlowPane;
+import javafx.scene.layout.HBox;
 
 /**
  *
@@ -59,6 +60,17 @@ public class JavaFXApplication1 extends Application implements IntParser {
         //przycisk
         Button btn = new Button();
         btn.setText("Parsuj Plik CSV");
+        
+        Button btn1 = new Button();
+        btn1.setText("Parsuj Plik WCC");
+        
+        Button btn2 = new Button();
+        btn2.setText("Wyczyść");
+        
+        HBox hb = new HBox(btn, btn1, btn2);
+        hb.setSpacing(10);
+        //hb.setPadding(new Insets(20));
+        
         btn.setOnAction(new EventHandler<ActionEvent>() {
             
             @Override
@@ -168,16 +180,36 @@ public class JavaFXApplication1 extends Application implements IntParser {
             }
         });
         
+        
+        
+        btn1.setOnAction(new EventHandler<ActionEvent>() {
+            
+            @Override
+            public void handle(ActionEvent event1) {
+                System.out.println("btn1\n");
+            }
+        });
+        
+        
+        btn2.setOnAction(new EventHandler<ActionEvent>() {
+            
+            @Override
+            public void handle(ActionEvent event2) {
+                podglad.setText("");
+            }
+        });
+        
         //StackPane root = new StackPane();
         FlowPane root = new FlowPane(Orientation.VERTICAL,20,10);
         root.setAlignment(Pos.CENTER);
         
         //root.getChildren().add(btn);
-        root.getChildren().addAll(btn, info1, info2, info3, info4, podglad, wynik, info5);
+        //root.getChildren().addAll(btn, btn1, info1, info2, info3, info4, podglad, wynik, info5);
+         root.getChildren().addAll(hb, info1, info2, info3, info4, podglad, wynik, info5);
         
-        Scene scene = new Scene(root, 700, 400);
+        Scene scene = new Scene(root, 600, 400);
         
-        primaryStage.setTitle("Repozytrium Dokumentów MIR - parser");
+        primaryStage.setTitle("PARSER - Repozytrium Dokumentów MIR");
         primaryStage.setScene(scene);
         primaryStage.show();
     }
