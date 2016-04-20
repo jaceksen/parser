@@ -59,10 +59,10 @@ public class JavaFXApplication1 extends Application implements IntParser {
         
         //przycisk
         Button btn = new Button();
-        btn.setText("CSV -> WCC");
+        btn.setText("CSV do WCC");
         
         Button btn1 = new Button();
-        btn1.setText("WCC -> CSV");
+        btn1.setText("WCC do CSV");
         
         Button btn2 = new Button();
         btn2.setText("Wyczyść");
