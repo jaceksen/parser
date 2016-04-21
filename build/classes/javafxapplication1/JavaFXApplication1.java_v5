@@ -1,0 +1,184 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package javafxapplication1;
+
+import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.layout.StackPane;
+import javafx.stage.Stage;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.geometry.Orientation;
+import javafx.geometry.Pos;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
+import javafx.scene.effect.BoxBlur;
+import javafx.scene.layout.FlowPane;
+
+/**
+ *
+ * @author jsen
+ */
+public class JavaFXApplication1 extends Application {
+    
+    
+    @Override
+    public void start(Stage primaryStage) {
+        
+        //Label
+        Label wynik = new Label();
+        Label info1 = new Label("Program używa pliku wejściowego: WCC_DATA.csv");
+        Label info2 = new Label("Parametry należy umieścić w pliku: WCC_PARAMETERS.txt");
+        Label info3 = new Label("Plik wynikowy to: WCC_DATA_PARSED.txt");
+        Label info4 = new Label("Podgląd pierwszych 100 wierszy pliku wynikowego:");
+        
+        String uzytkownik = System.getProperty("user.name");
+        
+        Label info5 = new Label("Aktualnie zalogowany: " + uzytkownik);
+        
+        //zamazanie
+        double ilezamazac = 10;
+        BoxBlur zamaz = new BoxBlur(1.0,1.0,1);
+    
+        
+        //TextArea
+        TextArea podglad = new TextArea();
+        
+        
+        //przycisk
+        Button btn = new Button();
+        btn.setText("Parsuj Plik CSV");
+        btn.setOnAction(new EventHandler<ActionEvent>() {
+            
+            @Override
+            public void handle(ActionEvent event) {
+                try {
+                    //System.out.println("Plik przerobiony.");
+                    //Sprawdzam ile jest wyrażeń aby stworzyć odpowiednią tablicę
+                   
+         
+                   
+                    
+                    
+                    //Pobieram parametry do tablicy
+                    //String tablica[] = new String[100];
+                    int liczba_wierszy = 0;
+                    int ile_wyswietlac = 100;
+                    String parametr;
+                    String tablica[] = new String[100];
+                    String str_podglad = "";
+                    Scanner params = new Scanner(new File("WCC_PARAMETERS.txt"));
+                    params.useDelimiter(",");
+                    int k=0;
+                    while (params.hasNext()) {
+                        parametr = params.next().replaceAll("[\n\r]", "");
+                        tablica[k] = parametr;
+                        k++;
+                    }
+                    params.close();
+                    
+                    
+                    Scanner scanner = new Scanner(new File("WCC_DATA.csv"));
+                    PrintWriter writer = new PrintWriter("WCC_DATA_PARSED.txt", "UTF-8");
+                    
+                    //String tablica[] = {"FileName=", "FilePar2=", "FilePar3="};
+                    int i = 0;
+                    String aktualny;
+                    
+                    scanner.useDelimiter(","); 
+                    while (scanner.hasNext())
+                    {                                      
+                        //if(scanner.next() == "\n") scanner.next().replace("\n", "");
+                        //if(scanner.next() == "\n") continue;
+                        aktualny = scanner.next().replaceAll("[\n\r]", "");
+                        //aktualny = scanner.next();
+                        
+                        //if(aktualny == "") continue;
+                        
+                        //writer.println(tablica[i]+scanner.next().trim()); 
+                        
+                        if(tablica[i] != null) {
+                        //writer.println(tablica[i]+aktualny+" i: " + i + " tab.length: " + tablica.length);
+                        writer.println(tablica[i]+aktualny);
+                        liczba_wierszy++;
+                            if(liczba_wierszy < ile_wyswietlac){
+                            str_podglad += tablica[i]+aktualny+"\n";
+                            podglad.setText(str_podglad);
+                            }
+                        }
+                        else
+                        {
+                        //writer.println(tablica[0]+aktualny+" i: " + i + " tab.length: " + tablica.length + "po else"); 
+                        writer.println("<EOD>");
+                        liczba_wierszy++;
+                        if(liczba_wierszy < ile_wyswietlac) {
+                            str_podglad += "<EOD>\n";
+                            podglad.setText(str_podglad);
+                            }
+                        writer.println(tablica[0]+aktualny);
+                        liczba_wierszy++;
+                        if(liczba_wierszy < ile_wyswietlac) {
+                            str_podglad += tablica[0]+aktualny+"\n";
+                            podglad.setText(str_podglad);
+                            }
+                        }
+                        
+                        if(tablica[i] == null) i = 0;
+                 
+                         i++;
+                 
+                        //if(i == tablica.length -1) i=-1;
+                        //writer.println(tablica[1]+scanner.next());
+                        //writer.println(tablica[2]+scanner.next());
+                        //scanner.next().replace("\n", "");
+                        //System.out.print("FileName="+scanner.next()+"\n");
+                        //System.out.print("FilePar2="+scanner.next()+"\n");
+                        //System.out.print("FilePar3="+scanner.next()+"\n");
+       
+                    }
+                    writer.println("<EOD>");
+                    scanner.close();
+                    writer.close();
+                    wynik.setText("Plik wynikowy został wygenerowany"); 
+                    //btn.setEffect(zamaz);
+                    //zamaz.setWidth(ilezamazac);
+                    //zamaz.setHeight(ilezamazac);
+                } catch (FileNotFoundException | UnsupportedEncodingException ex) {
+                    Logger.getLogger(JavaFXApplication1.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        });
+        
+        //StackPane root = new StackPane();
+        FlowPane root = new FlowPane(Orientation.VERTICAL,20,10);
+        root.setAlignment(Pos.CENTER);
+        
+        //root.getChildren().add(btn);
+        root.getChildren().addAll(btn, info1, info2, info3, info4, podglad, wynik, info5);
+        
+        Scene scene = new Scene(root, 700, 400);
+        
+        primaryStage.setTitle("Repozytrium Dokumentów MIR - parser");
+        primaryStage.setScene(scene);
+        primaryStage.show();
+    }
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        launch(args);
+    }
+    
+}
