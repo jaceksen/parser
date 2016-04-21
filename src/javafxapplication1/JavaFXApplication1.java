@@ -233,12 +233,17 @@ public class JavaFXApplication1 extends Application implements IntParser {
         
         Scene scene = new Scene(root, 600, 400);
         
+<<<<<<< HEAD
         primaryStage.setTitle("PARSER - Repozytrium Dokumentów MIR-PIB");
 >>>>>>> 7f812e51e0b3076a8a2fcf4691ddd31747ac13c0
+=======
+        primaryStage.setTitle("PARSER - Repozytrium Dokumentów MIR-PIB.");
+>>>>>>> 13715e8b4a9d105ead259493625388e81a93f037
         primaryStage.setScene(scene);
         primaryStage.show();
     }
 
+    
     /**
      * @param args the command line arguments
      */
