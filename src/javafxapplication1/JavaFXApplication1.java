@@ -10,7 +10,10 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+<<<<<<< HEAD
 import javafx.scene.layout.StackPane;
+=======
+>>>>>>> 7f812e51e0b3076a8a2fcf4691ddd31747ac13c0
 import javafx.stage.Stage;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -19,12 +22,20 @@ import java.io.UnsupportedEncodingException;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+<<<<<<< HEAD
+=======
+import javafx.geometry.Insets;
+>>>>>>> 7f812e51e0b3076a8a2fcf4691ddd31747ac13c0
 import javafx.geometry.Orientation;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.effect.BoxBlur;
 import javafx.scene.layout.FlowPane;
+<<<<<<< HEAD
+=======
+import javafx.scene.layout.HBox;
+>>>>>>> 7f812e51e0b3076a8a2fcf4691ddd31747ac13c0
 
 /**
  *
@@ -58,7 +69,22 @@ public class JavaFXApplication1 extends Application implements IntParser {
         
         //przycisk
         Button btn = new Button();
+<<<<<<< HEAD
         btn.setText("Parsuj Plik CSV");
+=======
+        btn.setText("CSV do WCC");
+        
+        Button btn1 = new Button();
+        btn1.setText("WCC do CSV");
+        
+        Button btn2 = new Button();
+        btn2.setText("Wyczyść");
+        
+        HBox hb = new HBox(btn, btn1, btn2);
+        hb.setSpacing(10);
+        //hb.setPadding(new Insets(20));
+        
+>>>>>>> 7f812e51e0b3076a8a2fcf4691ddd31747ac13c0
         btn.setOnAction(new EventHandler<ActionEvent>() {
             
             @Override
@@ -168,16 +194,47 @@ public class JavaFXApplication1 extends Application implements IntParser {
             }
         });
         
+<<<<<<< HEAD
+=======
+        
+        
+        btn1.setOnAction(new EventHandler<ActionEvent>() {
+            
+            @Override
+            public void handle(ActionEvent event1) {
+                System.out.println("btn1\n");
+            }
+        });
+        
+        
+        btn2.setOnAction(new EventHandler<ActionEvent>() {
+            
+            @Override
+            public void handle(ActionEvent event2) {
+                podglad.setText("");
+            }
+        });
+        
+>>>>>>> 7f812e51e0b3076a8a2fcf4691ddd31747ac13c0
         //StackPane root = new StackPane();
         FlowPane root = new FlowPane(Orientation.VERTICAL,20,10);
         root.setAlignment(Pos.CENTER);
         
         //root.getChildren().add(btn);
+<<<<<<< HEAD
         root.getChildren().addAll(btn, info1, info2, info3, info4, podglad, wynik, info5);
         
         Scene scene = new Scene(root, 700, 400);
         
         primaryStage.setTitle("Repozytrium Dokumentów MIR - parser");
+=======
+        //root.getChildren().addAll(btn, btn1, info1, info2, info3, info4, podglad, wynik, info5);
+         root.getChildren().addAll(hb, info1, info2, info3, info4, podglad, wynik, info5);
+        
+        Scene scene = new Scene(root, 600, 400);
+        
+        primaryStage.setTitle("PARSER - Repozytrium Dokumentów MIR-PIB");
+>>>>>>> 7f812e51e0b3076a8a2fcf4691ddd31747ac13c0
         primaryStage.setScene(scene);
         primaryStage.show();
     }
