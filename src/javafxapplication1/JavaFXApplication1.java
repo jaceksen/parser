@@ -30,6 +30,7 @@ import javafx.scene.layout.HBox;
 /**
  *
  * @author jsen
+ * test 1
  */
 public class JavaFXApplication1 extends Application implements IntParser {
     
@@ -55,7 +56,6 @@ public class JavaFXApplication1 extends Application implements IntParser {
         
         //TextArea
         TextArea podglad = new TextArea();
-        
         
         //przycisk
         Button btn = new Button();
