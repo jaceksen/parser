@@ -110,6 +110,10 @@ public class JavaFXApplication1 extends Application implements IntParser {
                     
                     //scanner.useDelimiter("\\|\\|"); 
                     scanner.useDelimiter("\\|");
+                    
+                    //wpisuję pierwszą linię Action
+                    writer.println("Action = update");
+                    
                     while (scanner.hasNext())
                     {                                      
                         //if(scanner.next() == "\n") scanner.next().replace("\n", "");
@@ -133,10 +137,10 @@ public class JavaFXApplication1 extends Application implements IntParser {
                         else
                         {
                         //writer.println(tablica[0]+aktualny+" i: " + i + " tab.length: " + tablica.length + "po else"); 
-                        writer.println("<EOD>");
+                        writer.println("<<EOD>>");
                         liczba_wierszy++;
                         if(liczba_wierszy < ile_wyswietlac) {
-                            str_podglad += "<EOD>\n";
+                            str_podglad += "<<EOD>>\n";
                             podglad.setText(str_podglad);
                             }
                         writer.println(tablica[0]+aktualny);
@@ -160,7 +164,7 @@ public class JavaFXApplication1 extends Application implements IntParser {
                         //System.out.print("FilePar3="+scanner.next()+"\n");
        
                     }
-                    writer.println("<EOD>");
+                    writer.println("<<EOD>>");
                     scanner.close();
                     writer.close();
                     wynik.setText("Plik wynikowy został wygenerowany"); 
@@ -186,7 +190,46 @@ public class JavaFXApplication1 extends Application implements IntParser {
             
             @Override
             public void handle(ActionEvent event1) {
-                System.out.println("btn1\n");
+           
+                try 
+                    {
+                    //Plik z którego czytam
+                    Scanner dane_z_wcc = new Scanner(new File("WCC_DATA.txt"));
+                    //Plik do którego piszę
+                    PrintWriter plik_csv = new PrintWriter("WCC.csv", "UTF-8");
+                    
+                    String wiersz;
+                    
+                    dane_z_wcc.useDelimiter("\n");
+                    while (dane_z_wcc.hasNext())
+                        {     
+                        wiersz = dane_z_wcc.next().replaceAll("[\n\r]", "|");
+                        
+                        //jeżeli wiersz zawiera <EOD> to go kasuję i zmaiast niego wstawiam \n
+                        if(wiersz.contains("<EOD>"))
+                            {
+                            plik_csv.println();
+                            continue;
+                            }
+                        
+                        //jeżeli wiersz zawiera wpis "Action =" to go pomijam
+                        if(wiersz.contains("Action =" )) continue;
+                        
+                        //Zapisuję wiersz do pliku wynikowego
+                        plik_csv.print(wiersz);                 
+                        }
+                    //sprzątam
+                    dane_z_wcc.close();
+                    plik_csv.close();
+                    wynik.setText("Plik wynikowy został wygenerowany"); 
+                    }                 
+                catch (FileNotFoundException | UnsupportedEncodingException ex) 
+                    {
+                    Logger.getLogger(JavaFXApplication1.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    
+                
+                
             }
         });
         
@@ -196,6 +239,7 @@ public class JavaFXApplication1 extends Application implements IntParser {
             @Override
             public void handle(ActionEvent event2) {
                 podglad.setText("");
+                wynik.setText("");
             }
         });
         
