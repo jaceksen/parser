@@ -37,7 +37,7 @@ public class JavaFXApplication1 extends Application implements IntParser {
     public String komunikat_o_bledzie() {
         String komunikat;
         komunikat = "Coś poszło nie tak ... :-( \n\n"
-                + "Format WCC_PARAMETERS.csv to: NazwaPola1=,NazwaPola2=,NazwaPola3=\n"
+                + "Format WCC_PARAMETERY.txt to: NazwaPola1=,NazwaPola2=,NazwaPola3=\n"
                 + "Pola w pliku wejściowym CSV powinny być rozdzielane znakiem: \"|\"\n"
                 + "Gdy już wszystko zawiedzie, zwróć się do autora:\nJacek Seń\n"
                 + "(jacek.sen@mir.gdynia.pl)";
@@ -49,8 +49,8 @@ public class JavaFXApplication1 extends Application implements IntParser {
 
         //Label
         Label wynik = new Label();
-        Label info1 = new Label("Program używa pliku wejściowego: WCC_DATA.csv");
-        Label info2 = new Label("Parametry należy umieścić w pliku: WCC_PARAMETERS.txt");
+        Label info1 = new Label("PLIK WYNIKOWY: ");
+        //Label info2 = new Label("Parametry należy umieścić w pliku: WCC_PARAMETERS.txt");
         Label info4 = new Label("Podgląd pierwszych 100 wierszy pliku wynikowego:");
 
         String uzytkownik = System.getProperty("user.name");
@@ -62,19 +62,31 @@ public class JavaFXApplication1 extends Application implements IntParser {
         BoxBlur zamaz = new BoxBlur(1.0, 1.0, 1);
 
         //Pole tekstowe - plik wynikowy
-        TextField nazwa_pliku_wyn = new TextField();
+        TextField nazwa_pliku_wyn = new TextField("WCC_WYNIK");
         nazwa_pliku_wyn.setPromptText("Wpisz nazwę pliku wynikowego...");
-        nazwa_pliku_wyn.setPrefWidth(400);
+        nazwa_pliku_wyn.setPrefWidth(200);
         //nazwa_pliku_wyn.setPrefColumnCount(20);
 
         //Pole tekstowe - plik wejściowy
         TextField nazwa_pliku_wej = new TextField();
-        nazwa_pliku_wej.setPromptText("Wybierz plik wejściowy");
+        nazwa_pliku_wej.setPromptText("Wybierz plik wejściowy...");
         nazwa_pliku_wej.setPrefWidth(400);
-
+        
         //przycisk wybierz plik wejściowy
         Button btn_plik_wej = new Button();
         btn_plik_wej.setText("Wybierz plik wejściowy");
+        
+        //Pole tekstowe - plik parametrów
+        TextField nazwa_pliku_param = new TextField("WCC_PARAMETRY.txt");
+        nazwa_pliku_param.setPromptText("Wybierz plik parametrów...");
+        nazwa_pliku_param.setPrefWidth(400);
+        
+        //przycisk plik parametrów
+        Button btn_plik_param = new Button();
+        btn_plik_param.setText("Wybierz plik parametrów");
+
+
+
 
         //TextArea
         TextArea podglad = new TextArea();
@@ -97,7 +109,34 @@ public class JavaFXApplication1 extends Application implements IntParser {
         //HBox na wybranie pliku wejściowego
         HBox hb_file_in = new HBox(nazwa_pliku_wej, btn_plik_wej);
         hb_file_in.setSpacing(10);
+        
+        //HBox na wybranie pliku parametrów
+        HBox hb_param_file = new HBox(nazwa_pliku_param, btn_plik_param);
+        hb_param_file.setSpacing(10);
+        
+        //Hbox plik wynikowy
+        HBox hb_wyn = new HBox(info1, nazwa_pliku_wyn);
+        hb_param_file.setSpacing(10);
+        
+        
+        //przycisk plik parametrów
+        btn_plik_param.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                FileChooser fc1 = new FileChooser();
+                File wybrany_plik1 = fc1.showOpenDialog(null);
 
+                if (wybrany_plik1 != null) {
+                    String plwej1;
+                    plwej1 = wybrany_plik1.getName();
+                    //System.out.println(plwej);
+                    nazwa_pliku_param.setText(wybrany_plik1.getAbsolutePath());
+                }
+            }
+        }
+        );
+
+        //przycisk plik wejściowy
         btn_plik_wej.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -123,7 +162,8 @@ public class JavaFXApplication1 extends Application implements IntParser {
                     //Sprawdzam ile jest wyrażeń aby stworzyć odpowiednią tablicę
 
                     String plik_wejsciowy = nazwa_pliku_wej.getText();
-                    String plik_wynikowy = nazwa_pliku_wyn.getText();
+                    String plik_wynikowy = nazwa_pliku_wyn.getText()+".txt";
+                    String plik_parametrow = nazwa_pliku_param.getText();
 
                     //Pobieram parametry do tablicy
                     //String tablica[] = new String[100];
@@ -132,7 +172,7 @@ public class JavaFXApplication1 extends Application implements IntParser {
                     String parametr;
                     String tablica[] = new String[100];
                     String str_podglad = "";
-                    Scanner params = new Scanner(new File("WCC_PARAMETERS.txt"));
+                    Scanner params = new Scanner(new File(plik_parametrow));
                     params.useDelimiter(",");
                     int k = 0;
                     while (params.hasNext()) {
@@ -205,6 +245,7 @@ public class JavaFXApplication1 extends Application implements IntParser {
                         //System.out.print("FilePar3="+scanner.next()+"\n");
                     }
                     writer.println("<<EOD>>");
+                    str_podglad += "<<EOD>>\n";
                     scanner.close();
                     writer.close();
                     wynik.setText("Plik wynikowy został wygenerowany");
@@ -226,10 +267,12 @@ public class JavaFXApplication1 extends Application implements IntParser {
 
                 try {
 
-                    String plik_wynikowy = nazwa_pliku_wyn.getText();
+                    String plik_wynikowy = nazwa_pliku_wyn.getText()+".csv";
 
                     //Plik z którego czytam
-                    Scanner dane_z_wcc = new Scanner(new File("WCC_DATA.txt"));
+                    String plik_wejsciowy = nazwa_pliku_wej.getText();
+                    //Scanner dane_z_wcc = new Scanner(new File("WCC_DATA.txt"));
+                    Scanner dane_z_wcc = new Scanner(new File(plik_wejsciowy));
                     //Plik do którego piszę
                     //PrintWriter plik_csv = new PrintWriter("WCC.csv", "UTF-8");
                     PrintWriter plik_csv = new PrintWriter(plik_wynikowy, "UTF-8");
@@ -301,9 +344,9 @@ public class JavaFXApplication1 extends Application implements IntParser {
 
         //root.getChildren().add(btn);
         //root.getChildren().addAll(btn, btn1, info1, info2, info3, info4, podglad, wynik, info5);
-        root.getChildren().addAll(hb, hb_file_in, nazwa_pliku_wyn, info1, info2, info4, podglad, wynik, info5);
+        root.getChildren().addAll(hb, hb_file_in, hb_param_file, hb_wyn, info4, podglad, wynik, info5);
 
-        Scene scene = new Scene(root, 600, 460);
+        Scene scene = new Scene(root, 600, 420);
 
         primaryStage.setTitle("PARSER - Repozytrium Dokumentów MIR-PIB");
         primaryStage.setScene(scene);
