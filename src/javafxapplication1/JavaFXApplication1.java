@@ -299,6 +299,7 @@ public class JavaFXApplication1 extends Application implements IntParser {
                     }
                     writer.println("<<EOD>>");
                     str_podglad += "<<EOD>>\n";
+                    podglad.setText(str_podglad);
                     scanner.close();
                     writer.close();
                     wynik.setText("Plik wynikowy został wygenerowany");
@@ -342,7 +343,8 @@ public class JavaFXApplication1 extends Application implements IntParser {
 
                     dane_z_wcc.useDelimiter("\n");
                     while (dane_z_wcc.hasNext()) {
-                        wiersz = dane_z_wcc.next().replaceAll("[\n\r]", "|");
+                        //wiersz = dane_z_wcc.next().replaceAll("[\n\r]", "|");
+                        wiersz = dane_z_wcc.next();
 
                         //jeżeli wiersz zawiera <EOD> to go kasuję i zmaiast niego wstawiam \n
                         if (wiersz.contains("<EOD>")) {
