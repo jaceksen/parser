@@ -195,7 +195,7 @@ public class JavaFXApplication1 extends Application implements IntParser {
         
         
         
-
+        // przycisk SCV do WCC
         btn.setOnAction(new EventHandler<ActionEvent>() {
 
             @Override
@@ -312,7 +312,9 @@ public class JavaFXApplication1 extends Application implements IntParser {
                 }
             }
         });
-
+        
+        
+        //przycisk WCC do CSV
         btn1.setOnAction(new EventHandler<ActionEvent>() {
 
             @Override
