@@ -55,7 +55,7 @@ public class JavaFXApplication1 extends Application implements IntParser {
 
         String uzytkownik = System.getProperty("user.name");
 
-        Label info5 = new Label("Aktualnie zalogowany: " + uzytkownik);
+        Label info5 = new Label("Aktualnie zalogowany   : " + uzytkownik);
 
         //zamazanie
         double ilezamazac = 10;
