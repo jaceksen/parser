@@ -10,6 +10,10 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+<<<<<<< HEAD
+import javafx.scene.layout.StackPane;
+=======
+>>>>>>> 7f812e51e0b3076a8a2fcf4691ddd31747ac13c0
 import javafx.stage.Stage;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -18,6 +22,13 @@ import java.io.UnsupportedEncodingException;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+import javafx.geometry.Insets;
+>>>>>>> 7f812e51e0b3076a8a2fcf4691ddd31747ac13c0
+=======
+>>>>>>> WCC_to_CSV
 import javafx.geometry.Orientation;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
@@ -25,8 +36,14 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.effect.BoxBlur;
 import javafx.scene.layout.FlowPane;
+<<<<<<< HEAD
+=======
 import javafx.scene.layout.HBox;
+<<<<<<< HEAD
+>>>>>>> 7f812e51e0b3076a8a2fcf4691ddd31747ac13c0
+=======
 import javafx.stage.FileChooser;
+>>>>>>> WCC_to_CSV
 
 /**
  *
@@ -93,6 +110,9 @@ public class JavaFXApplication1 extends Application implements IntParser {
 
         //przycisk
         Button btn = new Button();
+<<<<<<< HEAD
+        btn.setText("Parsuj Plik CSV");
+=======
         btn.setText("CSV do WCC");
 
         Button btn1 = new Button();
@@ -118,6 +138,9 @@ public class JavaFXApplication1 extends Application implements IntParser {
         HBox hb_wyn = new HBox(info1, nazwa_pliku_wyn);
         hb_param_file.setSpacing(10);
         
+<<<<<<< HEAD
+>>>>>>> 7f812e51e0b3076a8a2fcf4691ddd31747ac13c0
+=======
         
         //przycisk plik parametrów
         btn_plik_param.setOnAction(new EventHandler<ActionEvent>() {
@@ -153,6 +176,7 @@ public class JavaFXApplication1 extends Application implements IntParser {
         }
         );
 
+>>>>>>> WCC_to_CSV
         btn.setOnAction(new EventHandler<ActionEvent>() {
 
             @Override
@@ -259,7 +283,15 @@ public class JavaFXApplication1 extends Application implements IntParser {
                 }
             }
         });
+<<<<<<< HEAD
+        
+<<<<<<< HEAD
+=======
+        
+        
+=======
 
+>>>>>>> WCC_to_CSV
         btn1.setOnAction(new EventHandler<ActionEvent>() {
 
             @Override
@@ -337,23 +369,53 @@ public class JavaFXApplication1 extends Application implements IntParser {
                 wynik.setText("");
             }
         });
+<<<<<<< HEAD
+        
+>>>>>>> 7f812e51e0b3076a8a2fcf4691ddd31747ac13c0
+=======
 
+>>>>>>> WCC_to_CSV
         //StackPane root = new StackPane();
         FlowPane root = new FlowPane(Orientation.VERTICAL, 20, 10);
         root.setAlignment(Pos.CENTER);
 
         //root.getChildren().add(btn);
+<<<<<<< HEAD
+        root.getChildren().addAll(btn, info1, info2, info3, info4, podglad, wynik, info5);
+        
+        Scene scene = new Scene(root, 700, 400);
+        
+        primaryStage.setTitle("Repozytrium Dokumentów MIR - parser");
+=======
         //root.getChildren().addAll(btn, btn1, info1, info2, info3, info4, podglad, wynik, info5);
+<<<<<<< HEAD
+         root.getChildren().addAll(hb, info1, info2, info3, info4, podglad, wynik, info5);
+        
+        Scene scene = new Scene(root, 600, 400);
+        
+<<<<<<< HEAD
+=======
         root.getChildren().addAll(hb, hb_file_in, hb_param_file, hb_wyn, info4, podglad, wynik, info5);
 
         Scene scene = new Scene(root, 600, 420);
 
+>>>>>>> WCC_to_CSV
         primaryStage.setTitle("PARSER - Repozytrium Dokumentów MIR-PIB");
+>>>>>>> 7f812e51e0b3076a8a2fcf4691ddd31747ac13c0
+=======
+        primaryStage.setTitle("PARSER - Repozytrium Dokumentów MIR-PIB.");
+>>>>>>> 13715e8b4a9d105ead259493625388e81a93f037
         primaryStage.setScene(scene);
         primaryStage.show();
     }
 
     
+<<<<<<< HEAD
+    /**
+     * @param args the command line arguments
+     */
+=======
+>>>>>>> WCC_to_CSV
     public static void main(String[] args) {
         launch(args);
     }
