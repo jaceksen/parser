@@ -18,11 +18,16 @@ import java.io.UnsupportedEncodingException;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.geometry.Orientation;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
+import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Toggle;
+import javafx.scene.control.ToggleGroup;
 import javafx.scene.effect.BoxBlur;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
@@ -55,11 +60,29 @@ public class JavaFXApplication1 extends Application implements IntParser {
 
         String uzytkownik = System.getProperty("user.name");
 
-        Label info5 = new Label("Aktualnie zalogowany   : " + uzytkownik);
+        Label info5 = new Label("Aktualnie zalogowany: " + uzytkownik);
 
         //zamazanie
         double ilezamazac = 10;
         BoxBlur zamaz = new BoxBlur(1.0, 1.0, 1);
+        
+        //radio buttons
+        ToggleGroup group = new ToggleGroup();
+        
+        RadioButton insradio = new RadioButton("insert");
+        insradio.setToggleGroup(group);
+        
+        RadioButton updradio = new RadioButton("update");
+        updradio.setSelected(true);
+        updradio.setToggleGroup(group);
+        
+        RadioButton delradio = new RadioButton("delete");
+        delradio.setToggleGroup(group);
+        
+        //HBox na przyciski
+        HBox radiobuttons = new HBox(insradio, updradio, delradio);
+        radiobuttons.setSpacing(10);
+        
 
         //Pole tekstowe - plik wynikowy
         TextField nazwa_pliku_wyn = new TextField("WCC_WYNIK");
@@ -119,6 +142,11 @@ public class JavaFXApplication1 extends Application implements IntParser {
         hb_param_file.setSpacing(10);
         
         
+    
+        
+      
+        
+        
         //przycisk plik parametrów
         btn_plik_param.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -152,6 +180,21 @@ public class JavaFXApplication1 extends Application implements IntParser {
             }
         }
         );
+        
+        
+        /*
+          group.selectedToggleProperty().addListener(new ChangeListener<Toggle>() {
+                        @Override
+                        public void changed(ObservableValue<? extends Toggle> ov, Toggle t, Toggle t1) {
+                            System.out.println(t1);
+                            System.out.println(group.selectedToggleProperty().toString());
+                        }
+                    });
+
+          */                         
+        
+        
+        
 
         btn.setOnAction(new EventHandler<ActionEvent>() {
 
@@ -164,6 +207,10 @@ public class JavaFXApplication1 extends Application implements IntParser {
                     String plik_wejsciowy = nazwa_pliku_wej.getText();
                     String plik_wynikowy = nazwa_pliku_wyn.getText()+".txt";
                     String plik_parametrow = nazwa_pliku_param.getText();
+                    
+                    
+                      
+        
 
                     //Pobieram parametry do tablicy
                     //String tablica[] = new String[100];
@@ -190,12 +237,18 @@ public class JavaFXApplication1 extends Application implements IntParser {
                     //String tablica[] = {"FileName=", "FilePar2=", "FilePar3="};
                     int i = 0;
                     String aktualny;
+                    String wybrany_radio = "";
 
                     //scanner.useDelimiter("\\|\\|"); 
                     scanner.useDelimiter("\\|");
 
                     //wpisuję pierwszą linię Action
-                    str_podglad += "Action = update\n";
+                    //str_podglad += "Action = update\n";
+                    if(insradio.isSelected()) wybrany_radio="insert";
+                    if(updradio.isSelected()) wybrany_radio="update";
+                    if(delradio.isSelected()) wybrany_radio="delete";
+                    //str_podglad += (group.selectedToggleProperty().toString());
+                    str_podglad += "Action = " + wybrany_radio + "\n"; 
                     writer.println("Action = update");
 
                     while (scanner.hasNext()) {
@@ -344,9 +397,9 @@ public class JavaFXApplication1 extends Application implements IntParser {
 
         //root.getChildren().add(btn);
         //root.getChildren().addAll(btn, btn1, info1, info2, info3, info4, podglad, wynik, info5);
-        root.getChildren().addAll(hb, hb_file_in, hb_param_file, hb_wyn, info4, podglad, wynik, info5);
+        root.getChildren().addAll(hb, radiobuttons, hb_file_in, hb_param_file, hb_wyn, info4, podglad, wynik, info5);
 
-        Scene scene = new Scene(root, 600, 420);
+        Scene scene = new Scene(root, 600, 440);
 
         primaryStage.setTitle("PARSER - Repozytrium Dokumentów MIR-PIB");
         primaryStage.setScene(scene);
