@@ -1,0 +1,208 @@
+Action = insert
+dDocName=IdcServer
+dDocTitle=IdcServer
+dDocAuthor=sysadmin
+dSecurityGroup=Public
+dDocAccount=
+dDocType=Application
+dInDate=21.04.16 20:55
+primaryFile=/home/oracle/Pulpit/Dowiązanie do bin/IdcServer
+<<EOD>>
+dDocName=WorkflowAdmin
+dDocTitle=WorkflowAdmin
+dDocAuthor=sysadmin
+dSecurityGroup=Public
+dDocAccount=
+dDocType=Application
+dInDate=21.04.16 20:55
+primaryFile=/home/oracle/Pulpit/Dowiązanie do bin/WorkflowAdmin
+<<EOD>>
+dDocName=IdcLnLog
+dDocTitle=IdcLnLog
+dDocAuthor=sysadmin
+dSecurityGroup=Public
+dDocAccount=
+dDocType=Application
+dInDate=21.04.16 20:55
+primaryFile=/home/oracle/Pulpit/Dowiązanie do bin/IdcLnLog.htm
+<<EOD>>
+dDocName=IdcCommand
+dDocTitle=IdcCommand
+dDocAuthor=sysadmin
+dSecurityGroup=Public
+dDocAccount=
+dDocType=Application
+dInDate=21.04.16 20:55
+primaryFile=/home/oracle/Pulpit/Dowiązanie do bin/IdcCommand
+<<EOD>>
+dDocName=ComponentWizard
+dDocTitle=ComponentWizard
+dDocAuthor=sysadmin
+dSecurityGroup=Public
+dDocAccount=
+dDocType=Application
+dInDate=21.04.16 20:55
+primaryFile=/home/oracle/Pulpit/Dowiązanie do bin/ComponentWizard
+<<EOD>>
+dDocName=RepositoryManager
+dDocTitle=RepositoryManager
+dDocAuthor=sysadmin
+dSecurityGroup=Public
+dDocAccount=
+dDocType=Application
+dInDate=21.04.16 20:55
+primaryFile=/home/oracle/Pulpit/Dowiązanie do bin/RepositoryManager
+<<EOD>>
+dDocName=IdcAnalyze
+dDocTitle=IdcAnalyze
+dDocAuthor=sysadmin
+dSecurityGroup=Public
+dDocAccount=
+dDocType=Application
+dInDate=21.04.16 20:55
+primaryFile=/home/oracle/Pulpit/Dowiązanie do bin/IdcAnalyze
+<<EOD>>
+dDocName=IdcShell
+dDocTitle=IdcShell
+dDocAuthor=sysadmin
+dSecurityGroup=Public
+dDocAccount=
+dDocType=Application
+dInDate=21.04.16 20:55
+primaryFile=/home/oracle/Pulpit/Dowiązanie do bin/IdcShell
+<<EOD>>
+dDocName=UserAdmin
+dDocTitle=UserAdmin
+dDocAuthor=sysadmin
+dSecurityGroup=Public
+dDocAccount=
+dDocType=Application
+dInDate=21.04.16 20:55
+primaryFile=/home/oracle/Pulpit/Dowiązanie do bin/UserAdmin
+<<EOD>>
+dDocName=Archiver
+dDocTitle=Archiver
+dDocAuthor=sysadmin
+dSecurityGroup=Public
+dDocAccount=
+dDocType=Application
+dInDate=21.04.16 20:55
+primaryFile=/home/oracle/Pulpit/Dowiązanie do bin/Archiver
+<<EOD>>
+dDocName=IntradocApp
+dDocTitle=IntradocApp
+dDocAuthor=sysadmin
+dSecurityGroup=Public
+dDocAccount=
+dDocType=Application
+dInDate=21.04.16 20:55
+primaryFile=/home/oracle/Pulpit/Dowiązanie do bin/IntradocApp
+<<EOD>>
+dDocName=Launcher
+dDocTitle=Launcher
+dDocAuthor=sysadmin
+dSecurityGroup=Public
+dDocAccount=
+dDocType=Application
+dInDate=21.04.16 20:55
+primaryFile=/home/oracle/Pulpit/Dowiązanie do bin/Launcher.sh
+<<EOD>>
+dDocName=IdcLog01
+dDocTitle=IdcLog01
+dDocAuthor=sysadmin
+dSecurityGroup=Public
+dDocAccount=
+dDocType=Application
+dInDate=21.04.16 20:55
+primaryFile=/home/oracle/Pulpit/Dowiązanie do bin/IdcLog01.htm
+<<EOD>>
+dDocName=ocm
+dDocTitle=ocm
+dDocAuthor=sysadmin
+dSecurityGroup=Public
+dDocAccount=
+dDocType=Application
+dInDate=21.04.16 20:55
+primaryFile=/home/oracle/Pulpit/Dowiązanie do bin/ocm.cfg
+<<EOD>>
+dDocName=SystemProperties
+dDocTitle=SystemProperties
+dDocAuthor=sysadmin
+dSecurityGroup=Public
+dDocAccount=
+dDocType=Application
+dInDate=21.04.16 20:55
+primaryFile=/home/oracle/Pulpit/Dowiązanie do bin/SystemProperties
+<<EOD>>
+dDocName=intradoc
+dDocTitle=intradoc
+dDocAuthor=sysadmin
+dSecurityGroup=Public
+dDocAccount=
+dDocType=Application
+dInDate=21.04.16 20:55
+primaryFile=/home/oracle/Pulpit/Dowiązanie do bin/intradoc.cfg
+<<EOD>>
+dDocName=BatchLoader
+dDocTitle=BatchLoader
+dDocAuthor=sysadmin
+dSecurityGroup=Public
+dDocAccount=
+dDocType=Application
+dInDate=21.04.16 20:55
+primaryFile=/home/oracle/Pulpit/Dowiązanie do bin/BatchLoader
+<<EOD>>
+dDocName=UnixProcCtrl
+dDocTitle=UnixProcCtrl
+dDocAuthor=sysadmin
+dSecurityGroup=Public
+dDocAccount=
+dDocType=Application
+dInDate=21.04.16 20:55
+primaryFile=/home/oracle/Pulpit/Dowiązanie do bin/UnixProcCtrl
+<<EOD>>
+dDocName=ConfigurationManager
+dDocTitle=ConfigurationManager
+dDocAuthor=sysadmin
+dSecurityGroup=Public
+dDocAccount=
+dDocType=Application
+dInDate=21.04.16 20:55
+primaryFile=/home/oracle/Pulpit/Dowiązanie do bin/ConfigurationManager
+<<EOD>>
+dDocName=ComponentTool
+dDocTitle=ComponentTool
+dDocAuthor=sysadmin
+dSecurityGroup=Public
+dDocAccount=
+dDocType=Application
+dInDate=21.04.16 20:55
+primaryFile=/home/oracle/Pulpit/Dowiązanie do bin/ComponentTool
+<<EOD>>
+dDocName=lockwait
+dDocTitle=lockwait
+dDocAuthor=sysadmin
+dSecurityGroup=Public
+dDocAccount=
+dDocType=Application
+dInDate=21.04.16 20:55
+primaryFile=/home/oracle/Pulpit/Dowiązanie do bin/lockwait.dat
+<<EOD>>
+dDocName=Installer
+dDocTitle=Installer
+dDocAuthor=sysadmin
+dSecurityGroup=Public
+dDocAccount=
+dDocType=Application
+dInDate=21.04.16 20:55
+primaryFile=/home/oracle/Pulpit/Dowiązanie do bin/Installer
+<<EOD>>
+dDocName=WebLayoutEditor
+dDocTitle=WebLayoutEditor
+dDocAuthor=sysadmin
+dSecurityGroup=Public
+dDocAccount=
+dDocType=Application
+dInDate=21.04.16 20:55
+primaryFile=/home/oracle/Pulpit/Dowiązanie do bin/WebLayoutEditor
+<<EOD>>
