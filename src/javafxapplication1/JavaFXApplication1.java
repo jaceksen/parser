@@ -368,6 +368,7 @@ public class JavaFXApplication1 extends Application implements IntParser {
                         //Zapisuję wiersz do pliku wynikowego
                         if (liczba_werszy < ile_wyswietlac) {
                             wiersz_przyciety = wiersz_przyciety+"|";
+                            wiersz_przyciety = wiersz_przyciety.replaceAll("[\n\r]", "");
                             str_podglad += wiersz_przyciety;
                             plik_csv.print(wiersz_przyciety);
                             podglad.setText(str_podglad);
