@@ -1,2 +1,2 @@
 # parser
-WCC batch upload
+JavaFX - parsuje plik CSV do formatu batch loadera Oracle WebCenter Content 
